@@ -1,10 +1,6 @@
 import project_config
 
-####################################################################
-#
-# NODE EMBEDDER MODEL HYPERPARAMETERS
-#
-####################################################################
+
 
 def get_pretrain_hparams(args, combined=False):    
     print('node embedder args: ', args)
@@ -55,11 +51,6 @@ def get_pretrain_hparams(args, combined=False):
 
 
 
-####################################################################
-#
-# TRAIN MODEL HYPERPARAMETERS
-#
-####################################################################
 
 
 def get_train_hparams(args):
@@ -198,11 +189,7 @@ def get_patient_data_args(args, hparams):
 
 
 
-####################################################################
-#
-# PREDICTION HYPERPARAMETERS
-#
-####################################################################
+
 
 
 def get_predict_hparams(args):
@@ -229,7 +216,6 @@ def get_predict_hparams(args):
                'n_similar_patients': 2, # (Patients Like Me only) Number of patients with the same gene/disease that we add to the batch
     }
 
-    # Get hyperparameters based on run type arguments
     hparams = get_run_type_args(args, hparams)    
     hparams.update({'add_similar_patients' : False})
     hparams = get_patient_data_args(args, hparams)

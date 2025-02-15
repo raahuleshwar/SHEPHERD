@@ -36,10 +36,10 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 
 # Own code
 import project_config
-from shepherd.dataset import PatientDataset
-from shepherd.gene_prioritization_model import CombinedGPAligner
-from shepherd.patient_nca_model import CombinedPatientNCA 
-from shepherd.samplers import PatientNeighborSampler
+from raahul.dataset import PatientDataset
+from raahul.gene_prioritization_model import CombinedGPAligner
+from raahul.patient_nca_model import CombinedPatientNCA 
+from raahul.samplers import PatientNeighborSampler
 
 import preprocess
 from hparams import get_pretrain_hparams, get_train_hparams

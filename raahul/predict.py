@@ -28,8 +28,8 @@ import wandb
 
 # Own code
 import project_config
-from shepherd.dataset import PatientDataset
-from shepherd.samplers import PatientNeighborSampler
+from raahul.dataset import PatientDataset
+from raahul.samplers import PatientNeighborSampler
 
 
 import preprocess

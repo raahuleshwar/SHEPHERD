@@ -19,7 +19,7 @@ from pathlib import Path
 # Our code
 from node_embedder_model import NodeEmbeder
 from task_heads.gp_aligner import GPAligner
-from shepherd.task_heads.patient_nca import PatientNCA
+from raahul.task_heads.patient_nca import PatientNCA
 from utils.pretrain_utils import get_edges, calc_metrics
 from utils.train_utils import mean_reciprocal_rank, top_k_acc, average_rank
 from utils.train_utils import fit_umap, plot_softmax, mrr_vs_percent_overlap, plot_gene_rank_vs_x_intrain, plot_gene_rank_vs_hops, plot_degree_vs_attention, plot_nhops_to_gene_vs_attention, plot_gene_rank_vs_fraction_phenotype, plot_gene_rank_vs_numtrain, plot_gene_rank_vs_trainset

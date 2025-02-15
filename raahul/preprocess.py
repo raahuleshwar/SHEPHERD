@@ -1,9 +1,5 @@
-# General
 import numpy as np
 import pandas as pd
-#from typing import List, Optional, Tuple, NamedTuple, Union, Callable
-
-# Pytorch
 import torch
 import torch.nn as nn
 from torch_geometric.data import Data
@@ -14,15 +10,14 @@ import project_config
 
 def preprocess_graph(args):
 
-    # Read in nodes & edges
+    
     nodes = pd.read_csv(project_config.KG_DIR / args.node_map, sep="\t")
     edges = pd.read_csv(project_config.KG_DIR / args.edgelist, sep="\t")
 
-    # Initialize edge index
     edge_index = torch.LongTensor(edges[['x_idx', 'y_idx']].values.T).contiguous() 
     edge_attr = edges['full_relation']
 
-    # Convert edge attributes to idx
+    
     edge_attr_list = [
                       'effect/phenotype;phenotype_protein;gene/protein',
                       'gene/protein;phenotype_protein;effect/phenotype',
@@ -59,14 +54,14 @@ def preprocess_graph(args):
     edge_attr_to_idx_dict = {attr:i for i, attr in enumerate(edge_attr_list)}
     edge_attr = torch.LongTensor(np.vectorize(edge_attr_to_idx_dict.get)(edge_attr.values))
 
-    # Get train/val/test masks
+    
     mask = edges["mask"].values
     train_mask = torch.BoolTensor(mask == "train")
     val_mask = torch.BoolTensor(mask == "val")
     test_mask = torch.BoolTensor(mask == "test")
 
 
-    # Create data object
+    
     data = Data(edge_index = edge_index, edge_attr = edge_attr, train_mask = train_mask, val_mask = val_mask, test_mask = test_mask)
     return data, edge_attr_to_idx_dict, nodes
 
